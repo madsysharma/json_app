@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'models/student.dart';
+import 'dart:convert';
+
 void main() {
   runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -38,6 +42,33 @@ class _MyHomePageState extends State<MyHomePage> {
       _result = _counter.toString();
     });
   }
+
+  // manual method
+  void manualSerialize() {
+  Student s1 = Student("1024", "Jack Ring", "CSE", 3.33);
+  Map<String, dynamic> toJson = s1.toJson();
+  String jsonString = jsonEncode(toJson);
+
+  // Print to terminal and update UI
+  print('JSON map: $toJson');
+  print('Serialized JSON: $jsonString');
+  setState(() {
+    _result = 'Serialized JSON: $jsonString';
+  });
+}
+
+void manualDeserialize() {
+  Student s1 = Student("1024", "Jack Ring", "CSE", 3.33);
+  String jsonString = jsonEncode(s1.toJson());
+  Map<String, dynamic> decodedJson = jsonDecode(jsonString);
+  Student decoded = Student.fromJson(decodedJson);
+
+  // Print to terminal and update UI
+  print('Deserialized from JSON: ${decoded.id}, ${decoded.name}, ${decoded.major}, ${decoded.gpa}');
+  setState(() {
+    _result = 'Deserialized from JSON: ${decoded.id}, ${decoded.name}, ${decoded.major}, ${decoded.gpa}';
+  });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +106,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.purple,
                 ),
-                onPressed: _incrementCounter,
-                child: const Text('Serialize')
+                onPressed: manualSerialize,
+                child: const Text('Serialize (Manual)')
               ),
             ),
             Padding(
@@ -86,8 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.purple,
                 ),
-                onPressed: _incrementCounter,
-                child: const Text('Deserialize')
+                onPressed: manualDeserialize,
+                child: const Text('Deserialize (Manual)')
               ),
             )
           ],
