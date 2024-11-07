@@ -36,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   String _result = '';
+  
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -44,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   // manual method
-  void manualSerialize() {
+void manualSerialize() {
   Student s1 = Student("1024", "Jack Ring", "CSE", 3.33);
   Map<String, dynamic> toJson = s1.toJson();
   String jsonString = jsonEncode(toJson);
@@ -61,12 +62,38 @@ void manualDeserialize() {
   Student s1 = Student("1024", "Jack Ring", "CSE", 3.33);
   String jsonString = jsonEncode(s1.toJson());
   Map<String, dynamic> decodedJson = jsonDecode(jsonString);
-  // Student decoded = Student.fromJson(decodedJson);
+  Student decoded = Student.fromJson(decodedJson);
 
   // Print to terminal and update UI
-  print('Deserialized from JSON: $decodedJson');
+  print('Deserialized from JSON: $decoded');
   setState(() {
-    _result = 'Deserialized from JSON: $decodedJson';
+    _result = 'Deserialized from JSON: $decoded';
+  });
+}
+
+void autoSerialize() {
+  Student s1 = Student("1024", "Jack Ring", "CSE", 3.33);
+  Map<String, dynamic> toJson = s1.toJsonAutomatic();
+  String jsonString = jsonEncode(toJson);
+
+  // Print to terminal and update UI
+  print('JSON map: $toJson');
+  print('Serialized JSON: $jsonString');
+  setState(() {
+    _result = 'Serialized JSON: $jsonString';
+  });
+}
+
+void autoDeserialize() {
+  Student s1 = Student("1024", "Jack Ring", "CSE", 3.33);
+  String jsonString = jsonEncode(s1.toJson());
+  Map<String, dynamic> decodedJson = jsonDecode(jsonString);
+  Student decodedAutomatic = Student.fromJsonAutomatic(decodedJson);
+
+  // Print to terminal and update UI
+  print('Deserialized from JSON: $decodedAutomatic');
+  setState(() {
+    _result = 'Deserialized from JSON: $decodedAutomatic';
   });
 }
 
@@ -81,36 +108,38 @@ void manualDeserialize() {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Text(
                 'Click to demonstrate serialization or deserialization.'
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Text(
                 'Results:',
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(
-                '$_result'
+                _result
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.purple,
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.purple,
+                    ),
+                    onPressed: manualSerialize,
+                    child: const Text('Serialize (Manual)')
+                  ),
                 ),
-                onPressed: manualSerialize,
-                child: const Text('Serialize (Manual)')
-              ),
-            ),
-            Padding(
+                Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextButton(
                 style: TextButton.styleFrom(
@@ -120,7 +149,31 @@ void manualDeserialize() {
                 onPressed: manualDeserialize,
                 child: const Text('Deserialize (Manual)')
               ),
-            )
+            ),
+                        Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.purple,
+                ),
+                onPressed: autoSerialize,
+                child: const Text('Serialize (Auto)')
+              ),
+            ),
+                        Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.purple,
+                ),
+                onPressed: autoDeserialize,
+                child: const Text('Deserialize (Auto)')
+              ),
+            ),
+              ],
+            ),
           ],
         ),
       ),

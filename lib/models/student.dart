@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'student.g.dart';
+
+@JsonSerializable()
 class Student {
   final String id;
   final String name;
@@ -21,4 +26,18 @@ class Student {
         gpa = json['gpa'] as double,
         major = json['major'] as String;
 
+  factory Student.fromJsonAutomatic(Map<String, dynamic> json) => _$StudentFromJson(json);
+  Map<String, dynamic> toJsonAutomatic() => _$StudentToJson(this);
+
+  @override
+  String toString() {
+    return """
+      \n
+      Object Data:
+        id: $id,
+        name: $name,
+        major: $major,
+        gpa: $gpa
+    """;
+  }
 }
