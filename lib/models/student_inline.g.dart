@@ -12,8 +12,8 @@ StudentInline _$StudentInlineFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       major: json['major'] as String,
       gpa: (json['gpa'] as num).toDouble(),
-      creditsRequired: (json['creditsRequired'] as num).toInt(),
       creditsCompleted: (json['creditsCompleted'] as num).toInt(),
+      creditsRequired: (json['creditsRequired'] as num).toInt(),
       creditsRemaining: (json['creditsRemaining'] as num).toInt(),
     );
 
@@ -23,7 +23,7 @@ Map<String, dynamic> _$StudentInlineToJson(StudentInline instance) =>
       'name': instance.name,
       'major': instance.major,
       'gpa': instance.gpa,
-      'creditsRequired': instance.creditsRequired,
       'creditsCompleted': instance.creditsCompleted,
+      'creditsRequired': instance.creditsRequired,
       'creditsRemaining': instance.creditsRemaining,
     };

@@ -7,31 +7,13 @@ part of 'student_nested.dart';
 // **************************************************************************
 
 Credits _$CreditsFromJson(Map<String, dynamic> json) => Credits(
-      required: (json['required'] as num).toInt(),
       completed: (json['completed'] as num).toInt(),
+      required: (json['required'] as num).toInt(),
       remaining: (json['remaining'] as num).toInt(),
     );
 
 Map<String, dynamic> _$CreditsToJson(Credits instance) => <String, dynamic>{
-      'required': instance.required,
       'completed': instance.completed,
+      'required': instance.required,
       'remaining': instance.remaining,
-    };
-
-StudentNested _$StudentNestedFromJson(Map<String, dynamic> json) =>
-    StudentNested(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      major: json['major'] as String,
-      gpa: (json['gpa'] as num).toDouble(),
-      credits: Credits.fromJson(json['credits'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$StudentNestedToJson(StudentNested instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'major': instance.major,
-      'gpa': instance.gpa,
-      'credits': instance.credits,
     };
