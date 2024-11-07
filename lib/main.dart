@@ -61,12 +61,12 @@ void manualDeserialize() {
   Student s1 = Student("1024", "Jack Ring", "CSE", 3.33);
   String jsonString = jsonEncode(s1.toJson());
   Map<String, dynamic> decodedJson = jsonDecode(jsonString);
-  Student decoded = Student.fromJson(decodedJson);
+  // Student decoded = Student.fromJson(decodedJson);
 
   // Print to terminal and update UI
-  print('Deserialized from JSON: ${decoded.id}, ${decoded.name}, ${decoded.major}, ${decoded.gpa}');
+  print('Deserialized from JSON: $decodedJson');
   setState(() {
-    _result = 'Deserialized from JSON: ${decoded.id}, ${decoded.name}, ${decoded.major}, ${decoded.gpa}';
+    _result = 'Deserialized from JSON: $decodedJson';
   });
 }
 
