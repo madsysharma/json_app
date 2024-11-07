@@ -6,13 +6,20 @@ part of 'student_customcases.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+DateTimeConverter _$DateTimeConverterFromJson(Map<String, dynamic> json) =>
+    DateTimeConverter();
+
+Map<String, dynamic> _$DateTimeConverterToJson(DateTimeConverter instance) =>
+    <String, dynamic>{};
+
 StudentCustom _$StudentCustomFromJson(Map<String, dynamic> json) =>
     StudentCustom(
       id: json['id'] as String,
       name: json['name'] as String,
       dateOfBirth:
           const DateTimeConverter().fromJson(json['dateOfBirth'] as String),
-      gpa: (json['gpa'] as num?)?.toDouble() ?? 4.0,
+      password: json['password'] as String,
+      gpa: (json['gpa'] as num).toDouble(),
       address: json['address'] as String?,
     );
 
@@ -21,6 +28,7 @@ Map<String, dynamic> _$StudentCustomToJson(StudentCustom instance) {
     'id': instance.id,
     'name': instance.name,
     'dateOfBirth': const DateTimeConverter().toJson(instance.dateOfBirth),
+    'password': instance.password,
     'gpa': instance.gpa,
   };
 
