@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'student_inline.g.dart';
 
 @JsonSerializable()
-class Student {
+class StudentInline {
   final String id;
   final String name;
   final String major;
@@ -12,7 +12,10 @@ class Student {
   final int creditsCompleted;
   final int creditsRemaining;
 
-  Student({
+  // Inline Credits as a Map instead of a class
+  //final Map<String, int> credits;
+
+  StudentInline({
     required this.id,
     required this.name,
     required this.major,
@@ -22,8 +25,6 @@ class Student {
     required this.creditsRemaining,
   });
 
-  factory Student.fromJson(Map<String, dynamic> json) => _$StudentFromJson(json);
-  Map<String, dynamic> toJson() => _$StudentToJson(this);
+  factory StudentInline.fromJson(Map<String, dynamic> json) => _$StudentInlineFromJson(json);
+  Map<String, dynamic> toJson() => _$StudentInlineToJson(this);
 }
-
-

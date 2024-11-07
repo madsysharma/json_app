@@ -14,9 +14,9 @@ class DateTimeConverter implements JsonConverter<DateTime, String> {
 }
 
 @JsonSerializable()
-class Student {
+class StudentCustom {
   @JsonKey(name: 'id')
-  final String studentId;
+  final String id;
 
   final String name;
 
@@ -32,8 +32,8 @@ class Student {
   @JsonKey(includeIfNull: false) // Exclude this field if it's null
   final String? address;
 
-  Student({
-    required this.studentId,
+  StudentCustom({
+    required this.id,
     required this.name,
     required this.dateOfBirth,
     this.password, // Optional
@@ -41,6 +41,6 @@ class Student {
     this.address //Nullable
   });
 
-  factory Student.fromJson(Map<String, dynamic> json) => _$StudentFromJson(json);
-  Map<String, dynamic> toJson() => _$StudentToJson(this);
+  factory StudentCustom.fromJson(Map<String, dynamic> json) => _$StudentCustomFromJson(json);
+  Map<String, dynamic> toJson() => _$StudentCustomToJson(this);
 }

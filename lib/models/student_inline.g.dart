@@ -6,7 +6,8 @@ part of 'student_inline.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Student _$StudentFromJson(Map<String, dynamic> json) => Student(
+StudentInline _$StudentInlineFromJson(Map<String, dynamic> json) =>
+    StudentInline(
       id: json['id'] as String,
       name: json['name'] as String,
       major: json['major'] as String,
@@ -16,7 +17,8 @@ Student _$StudentFromJson(Map<String, dynamic> json) => Student(
       creditsRemaining: (json['creditsRemaining'] as num).toInt(),
     );
 
-Map<String, dynamic> _$StudentToJson(Student instance) => <String, dynamic>{
+Map<String, dynamic> _$StudentInlineToJson(StudentInline instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'major': instance.major,
