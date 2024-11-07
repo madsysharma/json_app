@@ -1,0 +1,12 @@
+{
+    "id": 1027,
+    "name": "Jane Doe",
+    "major": "CSE",
+    "gpa": 3.8,
+    "credits": {
+      "required": 120,
+      "completed": 90,
+      "remaining": 30
+    }
+  }
+  
