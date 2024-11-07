@@ -6,8 +6,9 @@ part of 'student_customcases.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Student _$StudentFromJson(Map<String, dynamic> json) => Student(
-      studentId: json['id'] as String,
+StudentCustom _$StudentCustomFromJson(Map<String, dynamic> json) =>
+    StudentCustom(
+      id: json['id'] as String,
       name: json['name'] as String,
       dateOfBirth:
           const DateTimeConverter().fromJson(json['dateOfBirth'] as String),
@@ -15,9 +16,9 @@ Student _$StudentFromJson(Map<String, dynamic> json) => Student(
       address: json['address'] as String?,
     );
 
-Map<String, dynamic> _$StudentToJson(Student instance) {
+Map<String, dynamic> _$StudentCustomToJson(StudentCustom instance) {
   final val = <String, dynamic>{
-    'id': instance.studentId,
+    'id': instance.id,
     'name': instance.name,
     'dateOfBirth': const DateTimeConverter().toJson(instance.dateOfBirth),
     'gpa': instance.gpa,

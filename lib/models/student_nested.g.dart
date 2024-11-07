@@ -18,7 +18,8 @@ Map<String, dynamic> _$CreditsToJson(Credits instance) => <String, dynamic>{
       'remaining': instance.remaining,
     };
 
-Student _$StudentFromJson(Map<String, dynamic> json) => Student(
+StudentNested _$StudentNestedFromJson(Map<String, dynamic> json) =>
+    StudentNested(
       id: json['id'] as String,
       name: json['name'] as String,
       major: json['major'] as String,
@@ -26,7 +27,8 @@ Student _$StudentFromJson(Map<String, dynamic> json) => Student(
       credits: Credits.fromJson(json['credits'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$StudentToJson(Student instance) => <String, dynamic>{
+Map<String, dynamic> _$StudentNestedToJson(StudentNested instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'major': instance.major,

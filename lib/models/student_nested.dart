@@ -15,15 +15,21 @@ class Credits {
 }
 
 @JsonSerializable()
-class Student {
+class StudentNested {
   final String id;
   final String name;
   final String major;
   final double gpa;
-  final Credits credits;  // Nested object
+  final Credits credits;
 
-  Student({required this.id, required this.name, required this.major, required this.gpa, required this.credits});
+  StudentNested({
+    required this.id,
+    required this.name,
+    required this.major,
+    required this.gpa,
+    required this.credits, // Nested object
+  });
 
-  factory Student.fromJson(Map<String, dynamic> json) => _$StudentFromJson(json);
-  Map<String, dynamic> toJson() => _$StudentToJson(this);
+  factory StudentNested.fromJson(Map<String, dynamic> json) => _$StudentNestedFromJson(json);
+  Map<String, dynamic> toJson() => _$StudentNestedToJson(this);
 }
