@@ -14,3 +14,5 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+Figma presentation link: https://www.figma.com/slides/vU90L3uYqxW5An3gY1fLcs/JSON-SERIALIZATION?node-id=1-32&t=Xj0NQ9XxfY851tit-1
